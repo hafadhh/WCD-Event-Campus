@@ -1,7 +1,6 @@
 import Navbar from "../../components/layout/Navbar/Navbar";
 import Hero from "../../components/sections/Hero/Hero";
 import EventCard from "../../components/cards/EventCard/EventCard";
-import FilterSidebar from "../../components/layout/FilterSidebar/FilterSidebar";
 import Footer from '../../components/layout/Footer/Footer'
 import { events } from '../../data/events'
 
@@ -36,25 +35,23 @@ function Home() {
   return (
     <main>
       <Navbar />
-      <section className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-6 py-10 lg:grid-cols-[320px_1fr]">
-        <FilterSidebar />
+      <section className="mx-auto max-w-7xl px-6 py-10">
+        <Hero />
 
-        <div>
-          <Hero />
+        <div className="mt-16 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <h2 className="text-4xl font-black text-primaryText">
+            Found {events.length} Events
+          </h2>
 
-          <div className="mt-16 flex items-center justify-between">
-            <h2 className="text-4xl font-black">Found 12 Events</h2>
+          <button className="w-fit rounded-full border border-borderSoft bg-white px-5 py-3 font-medium shadow-sm">
+            Most Relevant
+          </button>
+        </div>
 
-            <button className="rounded-full border border-borderSoft bg-white px-5 py-3 font-medium shadow-sm">
-              Most Relevant
-            </button>
-          </div>
-
-          <div className="mt-10 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-            {events.map((event, index) => (
-              <EventCard key={index} {...event} />
-            ))}
-          </div>
+        <div className="mt-10 grid items-stretch gap-8 md:grid-cols-2 xl:grid-cols-3">
+          {events.map((event) => (
+            <EventCard key={event.id} {...event} />
+          ))}
         </div>
       </section>
 
