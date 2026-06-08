@@ -43,7 +43,7 @@ function Home() {
           <Hero />
 
           <div className="mt-16 flex items-center justify-between">
-            <h2 className="text-4xl font-black">Found 12 Events</h2>
+            <h2 className="text-4xl font-black">Found Events!</h2>
 
             <button className="rounded-full border border-borderSoft bg-white px-5 py-3 font-medium shadow-sm">
               Most Relevant
