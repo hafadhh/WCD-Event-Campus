@@ -14,10 +14,11 @@ function EventCard({
     <Link to={`/event/${id}`}>
       <div className="rounded-card border border-borderSoft bg-surface shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-hover">
       {/* <div className="group overflow-hidden rounded-[30px] border border-borderSoft bg-white shadow-card transition duration-300 hover:-translate-y-2 hover:shadow-soft"> */}
-        <div className="relative h-52 overflow-hidden">
+        <div className="relative h-52 shrink-0 overflow-hidden rounded-t-card">
           <img
             src={image}
-            className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+            alt={title}
+            className="h-full w-full rounded-t-card object-cover transition duration-500 group-hover:scale-110"
           />
 
           <div className="absolute left-4 top-4 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white">
