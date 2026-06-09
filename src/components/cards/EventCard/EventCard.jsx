@@ -1,4 +1,4 @@
-import { Heart, MapPin } from "lucide-react";
+import { ArrowRight, CalendarDays, Heart, MapPin, UserRound } from "lucide-react";
 import { Link } from "react-router-dom";
 
 function EventCard({
@@ -8,10 +8,12 @@ function EventCard({
   category,
   date,
   location,
+  description,
+  pic,
   progress
 }) {
   return (
-    <Link to={`/event/${id}`} className="group block h-full">
+    <article className="group flex h-full min-h-[600px] flex-col overflow-hidden rounded-card border border-borderSoft bg-surface shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-hover">
       <div className="flex h-full min-h-[560px] flex-col overflow-hidden rounded-card border border-borderSoft bg-surface shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-hover">
         <div className="relative h-52 shrink-0 overflow-hidden rounded-t-card">
           <img
@@ -31,17 +33,31 @@ function EventCard({
 
         <div className="flex flex-1 flex-col space-y-5 p-6">
           <div>
-            <p className="text-sm font-semibold text-primary">{date}</p>
-
-            <h3 className="mt-3 min-h-[78px] font-serif text-[25px] leading-[1] text-primaryText">
+            <h3 className="min-h-[78px] font-serif text-[25px] leading-[1] text-primaryText">
               {title}
             </h3>
+
+            <p className="mt-4 line-clamp-3 text-sm leading-6 text-secondaryText">
+              {description}
+            </p>
           </div>
 
-          <div className="flex items-center gap-2 text-secondaryText">
+          <div className="mt-5 space-y-3 text-sm text-secondaryText">
+            <div className="flex items-center gap-2">
+            <CalendarDays size={18} />
+            <span>{date}</span>
+          </div>
+
+          <div className="flex items-center gap-2">
             <MapPin size={18} />
             <span>{location}</span>
           </div>
+
+          <div className="flex items-center gap-2">
+            <UserRound size={18} />
+            <span>{pic}</span>
+          </div>
+        </div>
 
           <div className="mt-auto">
             <div className="mb-2 flex justify-between text-sm">
@@ -57,10 +73,17 @@ function EventCard({
                 style={{ width: `${progress}%` }}
               />
             </div>
+            <Link
+              to={`/event/${id}`}
+              className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 font-semibold text-white shadow-sm transition hover:bg-primaryText"
+            >
+              View Details
+              <ArrowRight size={18} />
+              </Link>
           </div>
         </div>
       </div>
-    </Link>
+    </article>
   );
 }
 

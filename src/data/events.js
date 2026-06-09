@@ -47,6 +47,8 @@ export const events = [
     category: 'Workshop',
     date: '24 OCT, 2026',
     location: 'Auditorium A',
+    description: 'Join us for an immersive workshop on AI future proofing, where industry experts will share insights and strategies to navigate the evolving landscape of artificial intelligence.',
+    pic: 'Dr. Jane Smith',
     progress: 85,
     status: 'Published',
     participants: 230
@@ -59,6 +61,8 @@ export const events = [
     category: 'Music',
     date: '25 OCT, 2026',
     location: 'Sky Deck Lounge',
+    description: 'Experience the soulful sounds of jazz under the autumn sky at our exclusive rooftop event, featuring live performances from renowned artists and a cozy ambiance.',
+    pic: 'The Jazz Ensemble',
     progress: 42,
     status: 'Draft',
     participants: 120
@@ -71,6 +75,8 @@ export const events = [
     category: 'Career',
     date: '28 OCT, 2026',
     location: 'Grand Hall',
+    description: 'Connect with top tech companies and explore exciting career opportunities at our Annual Tech Career Fair, where you can network with industry leaders and attend informative sessions.',
+    pic: 'Tech Recruiters',
     progress: 95,
     status: 'Published',
     participants: 540
@@ -83,6 +89,8 @@ export const events = [
     category: 'Business',
     date: '30 OCT, 2026',
     location: 'Innovation Center',
+    description: 'Watch as aspiring entrepreneurs pitch their innovative ideas to a panel of judges in our Startup Pitch Competition, where the most promising startups will receive funding and mentorship.',
+    pic: 'Entrepreneurs',
     progress: 67,
     status: 'Ongoing',
     participants: 310
@@ -95,6 +103,8 @@ export const events = [
     category: 'Art',
     date: '02 NOV, 2026',
     location: 'Creative Space',
+    description: 'Explore the intersection of technology and creativity at our Digital Art Exhibition, showcasing cutting-edge works from digital artists around the world.',
+    pic: 'Various Artists',
     progress: 73,
     status: 'Published',
     participants: 185
@@ -107,6 +117,8 @@ export const events = [
     category: 'Technology',
     date: '05 NOV, 2026',
     location: 'Lab 3',
+    description: 'Enhance your cyber security skills with our intensive bootcamp, designed to equip you with the knowledge and tools needed to protect against digital threats.',
+    pic: 'Cyber Security Experts',
     progress: 58,
     status: 'Draft',
     participants: 90
@@ -119,6 +131,8 @@ export const events = [
     category: 'Photography',
     date: '08 NOV, 2026',
     location: 'City Park',
+    description: 'Join us for a scenic walk through the city streets, capturing the beauty of our urban landscape through the lens of photography.',
+    pic: 'Photography Enthusiasts',
     progress: 88,
     status: 'Published',
     participants: 145
@@ -131,6 +145,8 @@ export const events = [
     category: 'Gaming',
     date: '10 NOV, 2026',
     location: 'Tech Hub',
+    description: 'Connect with fellow game developers and share your passion for gaming at our Game Development Meetup, where you can discuss trends, share projects, and collaborate on new ideas.',
+    pic: 'Game Developers',
     progress: 61,
     status: 'Ongoing',
     participants: 275
@@ -143,6 +159,8 @@ export const events = [
     category: 'Networking',
     date: '12 NOV, 2026',
     location: 'Ballroom B',
+    description: 'Expand your professional network and connect with like-minded entrepreneurs at our Networking Night, where you can exchange ideas, find potential collaborators, and grow your business connections.',
+    pic: 'Entrepreneurs',
     progress: 79,
     status: 'Published',
     participants: 420
@@ -155,6 +173,8 @@ export const events = [
     category: 'Design',
     date: '15 NOV, 2026',
     location: 'Design Studio',
+    description: 'Master the art of UI/UX design with our comprehensive masterclass, where industry experts will guide you through the principles and techniques of creating user-friendly digital experiences.',
+    pic: 'Design Experts',
     progress: 91,
     status: 'Published',
     participants: 260
