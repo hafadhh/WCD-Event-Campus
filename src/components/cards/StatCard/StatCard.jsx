@@ -4,7 +4,7 @@ function StatCard({
     description
   }) {
     return (
-      <div className='rounded-[30px] border border-borderSoft bg-white p-7 shadow-card'>
+      <div className="rounded-[30px] border border-[#eee6dc] bg-white p-6 shadow-[0_14px_32px_rgba(48,39,30,0.06)]">
         <p className='text-sm font-bold uppercase tracking-wide text-softText'>
           {title}
         </p>

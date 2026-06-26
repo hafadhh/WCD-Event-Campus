@@ -2,7 +2,7 @@ import StatCard from '../../cards/StatCard/StatCard'
 
 function OrganizerStats() {
   return (
-    <section className='grid gap-6 md:grid-cols-3'>
+    <section className='grid gap-10 md:grid-cols-3'>
       <StatCard
         title='Total Events'
         value='18'

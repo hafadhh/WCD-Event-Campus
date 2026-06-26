@@ -79,17 +79,17 @@ function DashboardSidebar({ collapsed, setCollapsed }) {
       </div>
 
       {!collapsed && (
-        <div className='mt-auto p-4'>
-          <div className='rounded-[28px] p-6 shadow-soft'>
-            <h3 className='text-lg font-black text-primaryText'>
+        <div className="mt-auto p-4">
+          <div className="rounded-[28px] border border-[#eee6dc] bg-white p-6 shadow-[0_18px_45px_rgba(48,39,30,0.10)]">
+            <h3 className="text-lg font-black text-primaryText">
               Premium Access
             </h3>
 
-            <p className='mt-3 text-xs leading-relaxed text-secondaryText'>
+            <p className="mt-3 text-xs leading-relaxed text-secondaryText">
               Unlock advanced campus analytics and recommendations.
             </p>
 
-            <button className='mt-5 rounded-2xl bg-primary px-5 py-3 font-semibold text-black transition hover:scale-[1.03]'>
+            <button className="mt-5 rounded-2xl bg-primary px-5 py-3 font-semibold text-white transition hover:scale-[1.03]">
               Upgrade
             </button>
           </div>

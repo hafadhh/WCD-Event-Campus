@@ -2,20 +2,32 @@ import { Bell, Search } from "lucide-react";
 import { useAuth } from "../../../context/AuthContext";
 
 
-function DashboardTopbar() {
+function DashboardTopbar({
+  title = "Dashboard",
+  subtitle = "Welcome back, explore your campus activity.",
+  hideTitle = false
+}) {
   const { logout } = useAuth();
   return (
-    <header className="flex h-24 items-center justify-between border-b border-borderSoft bg-white px-8">
-      <div>
-        <h1 className="text-3xl font-black text-dark">Dashboard</h1>
+    <header
+      className={`flex h-24 items-center bg-transparent px-8 ${
+        hideTitle ? "justify-end" : "justify-between"
+      }`}
+    >
+      {!hideTitle && (
+        <div>
+          <h1 className="text-3xl font-black text-dark">
+            {title}
+          </h1>
 
-        <p className="mt-1 text-base text-softText">
-          Welcome back, explore your campus activity.
+        <p className="text-softText">
+          {subtitle}
         </p>
-      </div>
+        </div>
+      )}
 
       <div className="flex items-center gap-5">
-        <div className="flex h-14 w-[320px] items-center rounded-2xl border border-borderSoft bg-background px-4">
+        <div className="mr-16 flex h-12 w-[580px] items-center rounded-2xl border border-borderSoft bg-background px-4">
           <Search className="text-softText" />
 
           <input
@@ -34,7 +46,7 @@ function DashboardTopbar() {
         />
         <button
           onClick={logout}
-          className="rounded-2xl border border-borderSoft px-5 py-3 font-semibold"
+          className="rounded-2xl border border-borderSoft bg-white px-5 py-3 font-semibold"
         >
           Logout
         </button>

@@ -83,3 +83,17 @@ textarea {
 .btn-secondary {
   @apply rounded-full bg-surface px-6 py-3 font-semibold text-primaryText border border-borderSoft transition duration-300;
 } */
+
+@keyframes event-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-event-marquee {
+  animation: event-marquee 35s linear infinite;
+}

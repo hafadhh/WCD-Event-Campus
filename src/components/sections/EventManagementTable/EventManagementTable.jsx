@@ -1,10 +1,10 @@
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil, Plus, Trash2 } from "lucide-react";
 import { events } from '../../../data/events'
 import Badge from '../../ui/Badge/Badge'
 
 function EventManagementTable() {
   return (
-    <section className="rounded-[32px] border border-borderSoft bg-white p-8 shadow-card">
+    <section className="mt-12 rounded-[32px] border border-borderSoft bg-white p-8 shadow-card">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-black text-dark">Event Management</h2>
@@ -14,28 +14,29 @@ function EventManagementTable() {
           </p>
         </div>
 
-        <button className="rounded-2xl bg-primary px-5 py-3 font-semibold text-white">
+        <button className="flex items-center gap-2 rounded-2xl bg-primary px-3 py-3 font-semibold text-white">
+          <Plus size={18} />
           New Event
         </button>
       </div>
 
-      <div className="mt-10 overflow-hidden rounded-3xl border border-borderSoft">
-        <table className="w-full border-collapse">
-          <thead className="bg-background">
+      <div className="mt-6 overflow-hidden rounded-3xl border border-borderSoft">
+        <table className="w-full table-fixed border-collapse">
+          <thead className="bg-[#eee8dd]">
             <tr>
-              <th className="px-6 py-5 text-left text-sm font-bold uppercase tracking-wide text-softText">
+              <th className="w-[25%] px-6 py-5 text-center text-sm font-black uppercase tracking-[0.05em] text-dark">
                 Event
               </th>
 
-              <th className="px-6 py-5 text-left text-sm font-bold uppercase tracking-wide text-softText">
+              <th className="w-[18%] px-6 py-5 text-center text-sm font-black uppercase tracking-[0.05em] text-dark">
                 Status
               </th>
 
-              <th className="px-6 py-5 text-left text-sm font-bold uppercase tracking-wide text-softText">
+              <th className="w-[18%] px-6 py-5 text-center text-sm font-black uppercase tracking-[0.05em] text-dark">
                 Participants
               </th>
 
-              <th className="px-6 py-5 text-right text-sm font-bold uppercase tracking-wide text-softText">
+              <th className="w-[22%] px-6 py-5 text-center text-sm font-black uppercase tracking-[0.05em] text-dark">
                 Actions
               </th>
             </tr>
@@ -48,31 +49,22 @@ function EventManagementTable() {
                   {event.title}
                 </td>
 
-                <td className="px-6 py-5">
-                  <Badge
-                    variant={
-                      event.status === "Published" ? "success" : "warning"
-                    }
-                  >
-                    {event.status}
-                  </Badge>
-                  {/* <span
-                    className={`rounded-full px-4 py-2 text-sm font-semibold ${
-                      event.status === 'Published'
-                        ? 'bg-green-100 text-green-700'
-                        : 'bg-yellow-100 text-yellow-700'
-                    }`}
-                  >
-                    {event.status}
-                  </span> */}
+                <td className="px-6 py-5 text-center">
+                  <div className="flex justify-center">
+                    <Badge
+                      variant={event.status === "Published" ? "success" : "warning"}
+                    >
+                      {event.status}
+                    </Badge>
+                  </div>
                 </td>
 
-                <td className="px-6 py-5 text-softText">
+                <td className="px-6 py-5 text-center text-softText">
                   {event.participants}
                 </td>
 
                 <td className="px-6 py-5">
-                  <div className="flex justify-end gap-3">
+                  <div className="flex justify-center gap-3">
                     <button className="flex h-11 w-11 items-center justify-center rounded-2xl border border-borderSoft">
                       <Pencil size={18} />
                     </button>
