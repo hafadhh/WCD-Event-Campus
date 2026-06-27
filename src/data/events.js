@@ -1,162 +1,112 @@
-// export const events = [
-//   {
-//     id: 1,
-//     title: 'AI Future Proofing Workshop',
-//     image:
-//       'https://images.unsplash.com/photo-1511578314322-379afb476865',
-//     category: 'Workshop',
-//     date: '24 OCT, 2026',
-//     location: 'Auditorium A',
-//     progress: 85,
-//     status: 'Published',
-//     participants: 230
-//   },
-//   {
-//     id: 2,
-//     title: 'Autumn Jazz Rooftop',
-//     image:
-//       'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f',
-//     category: 'Music',
-//     date: '25 OCT, 2026',
-//     location: 'Sky Deck Lounge',
-//     progress: 42,
-//     status: 'Draft',
-//     participants: 120
-//   },
-//   {
-//     id: 3,
-//     title: 'Annual Tech Career Fair',
-//     image:
-//       'https://images.unsplash.com/photo-1515169067868-5387ec356754',
-//     category: 'Career',
-//     date: '28 OCT, 2026',
-//     location: 'Grand Hall',
-//     progress: 95,
-//     status: 'Published',
-//     participants: 540
-//   }
-// ]
-
-// ============= CADANGAN ===================
 export const events = [
   {
     id: 1,
-    title: 'AI Future Proofing Workshop',
-    image:
-      'https://images.unsplash.com/photo-1511578314322-379afb476865',
+    title: 'Workshop UI/UX Design Thinking',
+    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800',
     category: 'Workshop',
-    date: '24 OCT, 2026',
-    location: 'Auditorium A',
-    progress: 85,
+    date: '05 JUL, 2026',
+    location: 'Ruang Kreatif Lt. 3',
+    progress: 72,
     status: 'Published',
-    participants: 230
+    participants: 0,
   },
   {
     id: 2,
-    title: 'Autumn Jazz Rooftop',
-    image:
-      'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f',
-    category: 'Music',
-    date: '25 OCT, 2026',
-    location: 'Sky Deck Lounge',
-    progress: 42,
-    status: 'Draft',
-    participants: 120
+    title: 'Seminar Nasional Kecerdasan Buatan',
+    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800',
+    category: 'Seminar',
+    date: '08 JUL, 2026',
+    location: 'Auditorium Utama',
+    progress: 88,
+    status: 'Published',
+    participants: 0,
   },
   {
     id: 3,
-    title: 'Annual Tech Career Fair',
-    image:
-      'https://images.unsplash.com/photo-1515169067868-5387ec356754',
+    title: 'Cakrawala Career Fair 2026',
+    image: 'https://images.unsplash.com/photo-1515169067868-5387ec356754?w=800',
     category: 'Career',
-    date: '28 OCT, 2026',
-    location: 'Grand Hall',
+    date: '12 JUL, 2026',
+    location: 'Grand Hall Kampus',
     progress: 95,
     status: 'Published',
-    participants: 540
+    participants: 0,
   },
   {
     id: 4,
-    title: 'Startup Pitch Competition',
-    image:
-      'https://images.unsplash.com/photo-1552664730-d307ca884978',
-    category: 'Business',
-    date: '30 OCT, 2026',
-    location: 'Innovation Center',
-    progress: 67,
-    status: 'Ongoing',
-    participants: 310
+    title: 'Kompetisi Startup Mahasiswa',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800',
+    category: 'Competition',
+    date: '15 JUL, 2026',
+    location: 'Innovation Hub',
+    progress: 60,
+    status: 'Published',
+    participants: 0,
   },
   {
     id: 5,
-    title: 'Digital Art Exhibition',
-    image:
-      'https://images.unsplash.com/photo-1513364776144-60967b0f800f',
-    category: 'Art',
-    date: '02 NOV, 2026',
-    location: 'Creative Space',
-    progress: 73,
+    title: 'Pelatihan Public Speaking',
+    image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800',
+    category: 'Workshop',
+    date: '18 JUL, 2026',
+    location: 'Aula B Gedung Rektorat',
+    progress: 45,
     status: 'Published',
-    participants: 185
+    participants: 0,
   },
   {
     id: 6,
-    title: 'Cyber Security Bootcamp',
-    image:
-      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3',
-    category: 'Technology',
-    date: '05 NOV, 2026',
-    location: 'Lab 3',
-    progress: 58,
-    status: 'Draft',
-    participants: 90
+    title: 'Pameran Seni Mahasiswa Cakrawala',
+    image: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800',
+    category: 'Art',
+    date: '20 JUL, 2026',
+    location: 'Galeri Kampus',
+    progress: 33,
+    status: 'Published',
+    participants: 0,
   },
   {
     id: 7,
-    title: 'Photography Street Walk',
-    image:
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee',
-    category: 'Photography',
-    date: '08 NOV, 2026',
-    location: 'City Park',
-    progress: 88,
+    title: 'Bootcamp Web Development',
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800',
+    category: 'Technology',
+    date: '22 JUL, 2026',
+    location: 'Lab Komputer 2',
+    progress: 80,
     status: 'Published',
-    participants: 145
+    participants: 0,
   },
   {
     id: 8,
-    title: 'Game Development Meetup',
-    image:
-      'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8',
-    category: 'Gaming',
-    date: '10 NOV, 2026',
-    location: 'Tech Hub',
-    progress: 61,
-    status: 'Ongoing',
-    participants: 275
+    title: 'Malam Musik Mahasiswa',
+    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800',
+    category: 'Music',
+    date: '25 JUL, 2026',
+    location: 'Open Stage Kampus',
+    progress: 55,
+    status: 'Published',
+    participants: 0,
   },
   {
     id: 9,
-    title: 'Entrepreneur Networking Night',
-    image:
-      'https://images.unsplash.com/photo-1517457373958-b7bdd4587205',
+    title: 'Networking Night — Tech & Business',
+    image: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800',
     category: 'Networking',
-    date: '12 NOV, 2026',
-    location: 'Ballroom B',
-    progress: 79,
+    date: '26 JUL, 2026',
+    location: 'Sky Lounge Lt. 12',
+    progress: 68,
     status: 'Published',
-    participants: 420
+    participants: 0,
   },
   {
     id: 10,
-    title: 'UI/UX Design Masterclass',
-    image:
-      'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
-    category: 'Design',
-    date: '15 NOV, 2026',
-    location: 'Design Studio',
-    progress: 91,
+    title: 'Hackathon Cakrawala 24H',
+    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800',
+    category: 'Competition',
+    date: '26 JUL, 2026',
+    location: 'Gedung Teknik Lantai 5',
+    progress: 77,
     status: 'Published',
-    participants: 260
-  }
+    participants: 0,
+  },
 ]

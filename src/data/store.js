@@ -1,31 +1,29 @@
-/**
- * Central localStorage store.
- * Keys:
- *   wcd_events        — array of event objects (source of truth, seeded from events.js)
- *   wcd_registrations — array of { id, eventId, userId, name, email, registeredAt }
- *   wcd_students      — array of student accounts (from auth)
- */
-
 import { events as SEED_EVENTS } from './events'
+
+const EVENTS_KEY = 'wcd_events'
+const REGS_KEY = 'wcd_registrations'
+const SEED_VERSION = 'v4' // bump ini kalau mau reset seed
 
 // ─── EVENTS ──────────────────────────────────────────────────────────────────
 
 export function getEvents() {
   try {
-    const raw = localStorage.getItem('wcd_events')
-    if (!raw) {
-      // Seed on first load
-      localStorage.setItem('wcd_events', JSON.stringify(SEED_EVENTS))
+    const version = localStorage.getItem('wcd_seed_version')
+    if (version !== SEED_VERSION) {
+      // Seed baru — reset events ke data terbaru, jaga registrasi
+      localStorage.setItem(EVENTS_KEY, JSON.stringify(SEED_EVENTS))
+      localStorage.setItem('wcd_seed_version', SEED_VERSION)
       return SEED_EVENTS
     }
-    return JSON.parse(raw)
+    const raw = localStorage.getItem(EVENTS_KEY)
+    return raw ? JSON.parse(raw) : SEED_EVENTS
   } catch {
     return SEED_EVENTS
   }
 }
 
 export function saveEvents(events) {
-  localStorage.setItem('wcd_events', JSON.stringify(events))
+  localStorage.setItem(EVENTS_KEY, JSON.stringify(events))
 }
 
 export function createEvent(eventData) {
@@ -52,32 +50,29 @@ export function updateEvent(id, updates) {
 }
 
 export function deleteEvent(id) {
-  const events = getEvents().filter((e) => e.id !== id)
-  saveEvents(events)
-  // Also remove registrations for this event
-  const regs = getRegistrations().filter((r) => r.eventId !== id)
-  saveRegistrations(regs)
+  saveEvents(getEvents().filter((e) => e.id !== id))
+  saveRegistrations(getRegistrations().filter((r) => r.eventId !== id))
 }
 
 // ─── REGISTRATIONS ───────────────────────────────────────────────────────────
 
 export function getRegistrations() {
   try {
-    return JSON.parse(localStorage.getItem('wcd_registrations') || '[]')
+    return JSON.parse(localStorage.getItem(REGS_KEY) || '[]')
   } catch {
     return []
   }
 }
 
 export function saveRegistrations(regs) {
-  localStorage.setItem('wcd_registrations', JSON.stringify(regs))
+  localStorage.setItem(REGS_KEY, JSON.stringify(regs))
 }
 
 export function registerForEvent({ eventId, userId, name, email }) {
   const regs = getRegistrations()
-  // Prevent duplicate
-  const already = regs.find((r) => r.eventId === eventId && r.userId === userId)
-  if (already) return { success: false, error: 'Sudah terdaftar di event ini.' }
+  if (regs.find((r) => r.eventId === eventId && r.userId === userId)) {
+    return { success: false, error: 'Kamu sudah terdaftar di event ini.' }
+  }
 
   const newReg = {
     id: `reg-${Date.now()}`,
@@ -90,29 +85,29 @@ export function registerForEvent({ eventId, userId, name, email }) {
   regs.push(newReg)
   saveRegistrations(regs)
 
-  // Bump participant count
-  const events = getEvents()
-  const idx = events.findIndex((e) => e.id === eventId)
+  // Increment participant count
+  const evs = getEvents()
+  const idx = evs.findIndex((e) => e.id === eventId)
   if (idx !== -1) {
-    events[idx].participants = (events[idx].participants || 0) + 1
-    saveEvents(events)
+    evs[idx].participants = (evs[idx].participants || 0) + 1
+    saveEvents(evs)
   }
 
   return { success: true, registration: newReg }
 }
 
 export function cancelRegistration(eventId, userId) {
-  const regs = getRegistrations().filter(
-    (r) => !(r.eventId === eventId && r.userId === userId)
+  saveRegistrations(
+    getRegistrations().filter(
+      (r) => !(r.eventId === eventId && r.userId === userId)
+    )
   )
-  saveRegistrations(regs)
-
-  // Decrement participant count
-  const events = getEvents()
-  const idx = events.findIndex((e) => e.id === eventId)
+  // Decrement
+  const evs = getEvents()
+  const idx = evs.findIndex((e) => e.id === eventId)
   if (idx !== -1) {
-    events[idx].participants = Math.max(0, (events[idx].participants || 1) - 1)
-    saveEvents(events)
+    evs[idx].participants = Math.max(0, (evs[idx].participants || 1) - 1)
+    saveEvents(evs)
   }
 }
 
@@ -126,4 +121,38 @@ export function getRegistrationsByEvent(eventId) {
 
 export function isRegistered(eventId, userId) {
   return getRegistrations().some((r) => r.eventId === eventId && r.userId === userId)
+}
+
+// ─── BOOKMARKS ───────────────────────────────────────────────────────────────
+
+const BM_KEY = 'wcd_bookmarks'
+
+export function getBookmarks(userId) {
+  try {
+    const all = JSON.parse(localStorage.getItem(BM_KEY) || '{}')
+    return all[userId] || []
+  } catch {
+    return []
+  }
+}
+
+export function toggleBookmark(userId, eventId) {
+  try {
+    const all = JSON.parse(localStorage.getItem(BM_KEY) || '{}')
+    const userBm = all[userId] || []
+    const idx = userBm.indexOf(eventId)
+    if (idx === -1) {
+      all[userId] = [...userBm, eventId]
+    } else {
+      all[userId] = userBm.filter((id) => id !== eventId)
+    }
+    localStorage.setItem(BM_KEY, JSON.stringify(all))
+    return all[userId]
+  } catch {
+    return []
+  }
+}
+
+export function isBookmarked(userId, eventId) {
+  return getBookmarks(userId).includes(eventId)
 }
