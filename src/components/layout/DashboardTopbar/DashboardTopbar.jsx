@@ -1,38 +1,57 @@
 import { Bell, Search } from 'lucide-react'
 import { useAuth } from '../../../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
-function DashboardTopbar({ pageTitle = 'Dashboard', pageSubtitle = 'Welcome back, explore your campus activity.' }) {
-  const { user } = useAuth()
+function DashboardTopbar({
+  title = 'Dashboard',
+  subtitle = 'Welcome back, explore your campus activity.',
+  hideTitle = false,
+  onSearch,
+}) {
+  const { logout, user } = useAuth()
+  const navigate = useNavigate()
+
+  function handleLogout() {
+    logout()
+    navigate('/login', { replace: true })
+  }
 
   return (
-    <header className="flex h-24 items-center justify-between border-b border-borderSoft bg-surface px-8">
-      <div>
-        <h1 className="text-3xl font-black text-dark">{pageTitle}</h1>
-        <p className="mt-1 text-base text-secondaryText">{pageSubtitle}</p>
-      </div>
+    <header
+      className={`relative flex h-24 items-center bg-transparent px-8 ${
+        hideTitle ? 'justify-end' : 'justify-between'
+      }`}
+    >
+      {!hideTitle && (
+        <div>
+          <h1 className="text-3xl font-black text-dark">{title}</h1>
+          <p className="text-softText">{subtitle}</p>
+        </div>
+      )}
 
-      <div className="flex items-center gap-4">
-        <div className="flex h-14 w-[280px] items-center rounded-2xl border border-borderSoft bg-background px-4">
-          <Search size={18} className="text-secondaryText" />
+      {/* Search bar — dipusatkan terhadap seluruh header (absolute), bukan flex anak */}
+      <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 md:block">
+        <div className="flex h-12 w-[320px] items-center rounded-2xl border border-borderSoft bg-background px-4 lg:w-[420px]">
+          <Search className="text-softText" size={18} />
           <input
-            placeholder="Search events..."
-            className="h-full flex-1 bg-transparent px-3 text-sm outline-none"
+            placeholder="Search..."
+            onChange={(e) => onSearch?.(e.target.value)}
+            className="h-full flex-1 bg-transparent px-3 outline-none"
           />
         </div>
+      </div>
 
-        <button className="flex h-11 w-11 items-center justify-center rounded-2xl border border-borderSoft bg-surface">
-          <Bell size={18} />
+      <div className="flex items-center gap-5">
+        <button className="flex h-14 w-14 items-center justify-center rounded-2xl border border-borderSoft bg-white">
+          <Bell />
         </button>
 
-        <div className="flex items-center gap-3">
-          <div className="text-right">
-            <p className="text-sm font-bold text-dark">{user?.name}</p>
-            <p className="text-xs text-secondaryText">Mahasiswa</p>
-          </div>
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primarySoft font-black text-primary">
-            {user?.name?.charAt(0).toUpperCase()}
-          </div>
-        </div>
+        <button
+          onClick={handleLogout}
+          className="rounded-2xl border border-borderSoft bg-white px-5 py-3 font-semibold"
+        >
+          Logout
+        </button>
       </div>
     </header>
   )

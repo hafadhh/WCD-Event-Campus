@@ -1,24 +1,24 @@
 import StatCard from '../../cards/StatCard/StatCard'
 
-function OrganizerStats() {
+function OrganizerStats({ totalEvents, totalParticipants, upcomingEvents }) {
   return (
     <section className='grid gap-6 md:grid-cols-3'>
       <StatCard
         title='Total Events'
-        value='18'
+        value={String(totalEvents)}
         description='Events published this semester.'
       />
 
       <StatCard
         title='Participants'
-        value='1.2K'
+        value={String(totalParticipants)}
         description='Total registered participants.'
       />
 
       <StatCard
-        title='Revenue'
-        value='$4.8K'
-        description='Revenue generated from paid events.'
+        title='Upcoming'
+        value={String(upcomingEvents)}
+        description='Events scheduled in the next 30 days.'
       />
     </section>
   )
